@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#e8e0d5" />
+    <title>We're Not Really Strangers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="table">
+      <header class="title">
+        <h1>We're Not Really Strangers</h1>
+      </header>
+
+      <section class="deck-row" id="deckArea">
+        <div class="deck" data-deck="perception">
+          <div class="deck-stack" id="stack-perception"></div>
+          <span class="deck-label">Perception</span>
+          <span class="deck-count" id="count-perception">0</span>
+        </div>
+
+        <div class="deck" data-deck="connection">
+          <div class="deck-stack" id="stack-connection"></div>
+          <span class="deck-label">Connection</span>
+          <span class="deck-count" id="count-connection">0</span>
+        </div>
+
+        <div class="deck" data-deck="reflection">
+          <div class="deck-stack" id="stack-reflection"></div>
+          <span class="deck-label">Reflection</span>
+          <span class="deck-count" id="count-reflection">0</span>
+        </div>
+
+        <div class="deck" data-deck="wildcard">
+          <div class="deck-stack" id="stack-wildcard"></div>
+          <span class="deck-label">Wild Card</span>
+          <span class="deck-count" id="count-wildcard">0</span>
+        </div>
+      </section>
+
+      <section class="play-area" id="playArea">
+        <div class="card-stage" id="cardStage">
+          <p class="hint" id="hintText">Tap a deck to begin</p>
+        </div>
+      </section>
+
+      <footer class="table-footer">
+        <div class="discard-pile" id="discardPile">
+          <div class="discard-stack" id="discardStack"></div>
+          <span class="discard-count" id="discardMeta">0 discarded</span>
+        </div>
+
+        <div class="controls">
+          <button id="shuffleBtn" class="ctrl-btn" disabled>Shuffle</button>
+          <button id="randomPickBtn" class="ctrl-btn">Random</button>
+          <button id="resetBtn" class="ctrl-btn">Reset</button>
+        </div>
+      </footer>
+
+      <div class="drawn-card hidden" id="drawnCard">
+        <div class="card-inner">
+          <div class="card-back"></div>
+          <div class="card-front">
+            <span class="card-category" id="cardCategory">Perception</span>
+            <p class="card-text" id="cardText">Question goes here</p>
+            <span class="card-footer">Discuss, then discard</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="discard-btn hidden" id="discardBtn">Discard</button>
+    </main>
+
+    <script src="questions-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
