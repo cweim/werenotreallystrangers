@@ -40,7 +40,7 @@ function buildDecks() {
   }
   const decks = {};
   DECK_KEYS.forEach((key) => {
-    decks[key] = { remaining: [...window.QUESTION_BANK[key]] };
+    decks[key] = { remaining: shuffle(window.QUESTION_BANK[key]) };
   });
   return decks;
 }
