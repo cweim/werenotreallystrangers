@@ -40,7 +40,7 @@ function buildDecks() {
   }
   const decks = {};
   DECK_KEYS.forEach((key) => {
-    decks[key] = { remaining: shuffle(window.QUESTION_BANK[key]) };
+    decks[key] = { remaining: shuffleArray(window.QUESTION_BANK[key]) };
   });
   return decks;
 }
@@ -302,4 +302,9 @@ resetBtn.addEventListener("click", resetGame);
 discardBtn.addEventListener("click", discardCard);
 
 // Initialize
-resetGame();
+try {
+  resetGame();
+} catch (error) {
+  console.error(error);
+  setHint("Failed to load question decks. Refresh the page.");
+}
