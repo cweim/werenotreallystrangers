@@ -1,4 +1,4 @@
-window.QUESTION_BANK = {
+const QUESTION_BANK = {
   "perception": [
     "What is the first thing you noticed about me?",
     "What do you think is the hardest part of what I do for a living?",
@@ -147,3 +147,5 @@ window.QUESTION_BANK = {
     "Write a message to each other on small pieces of paper, and open it after you've left."
   ]
 };
+
+export default QUESTION_BANK;
