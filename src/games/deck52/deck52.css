@@ -1,5 +1,5 @@
 .deck52-app {
-  width: min(900px, 100% - 1.5rem);
+  width: min(1400px, 100% - 2rem);
   margin: 0 auto;
   padding-bottom: 2.5rem;
   display: grid;
@@ -59,9 +59,11 @@
 }
 
 .deck52-table {
+  --card-width: 126px;
+  --card-height: 176px;
   position: relative;
   width: 100%;
-  min-height: 70dvh;
+  min-height: clamp(620px, 80dvh, 920px);
   border-radius: 16px;
   border: 1px solid var(--border);
   background:
@@ -75,16 +77,16 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 126px;
-  height: 176px;
+  width: var(--card-width);
+  height: var(--card-height);
   transform: translate(-50%, -50%);
 }
 
 .deck52-stack {
   position: absolute;
   inset: 0;
-  width: 126px;
-  height: 176px;
+  width: var(--card-width);
+  height: var(--card-height);
 }
 
 .deck-shadow {
@@ -225,8 +227,8 @@
 
 .table-card {
   position: absolute;
-  width: 126px;
-  height: 176px;
+  width: var(--card-width);
+  height: var(--card-height);
   border-radius: 10px;
   z-index: 5;
   pointer-events: auto;
@@ -279,9 +281,38 @@
 
 .empty-table {
   margin: 0;
-  min-height: 70dvh;
+  min-height: clamp(620px, 80dvh, 920px);
   display: grid;
   place-items: center;
   color: var(--text-subtle);
   font-weight: 600;
+}
+
+@media (max-width: 820px) {
+  .deck52-app {
+    width: min(100%, 100% - 1rem);
+    padding-bottom: 1.25rem;
+  }
+
+  .deck52-table {
+    --card-width: 88px;
+    --card-height: 124px;
+    min-height: 62dvh;
+  }
+
+  .empty-table {
+    min-height: 62dvh;
+  }
+
+  .corner {
+    font-size: 0.8rem;
+  }
+
+  .corner span {
+    font-size: 0.72rem;
+  }
+
+  .center-symbol {
+    font-size: 1.2rem;
+  }
 }

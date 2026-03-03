@@ -46,6 +46,20 @@ function clamp(value, minimum, maximum) {
   return Math.min(Math.max(value, minimum), maximum)
 }
 
+function getCardMetrics(area) {
+  const styles = window.getComputedStyle(area)
+  const cardWidth = parseFloat(styles.getPropertyValue('--card-width')) || 126
+  const cardHeight = parseFloat(styles.getPropertyValue('--card-height')) || 176
+
+  return {
+    cardWidth,
+    cardHeight,
+    halfWidth: cardWidth / 2,
+    halfHeight: cardHeight / 2,
+    padding: 16,
+  }
+}
+
 function Deck52Game() {
   const orderedDeck = useMemo(() => createOrderedDeck(), [])
   const [deck, setDeck] = useState(orderedDeck)
@@ -103,18 +117,20 @@ function Deck52Game() {
     const drag = dragState.current
     if (!area || !drag.isDragging || drag.pointerId !== event.pointerId) return
 
+    const metrics = getCardMetrics(area)
+
     const deltaX = event.clientX - drag.startX
     const deltaY = event.clientY - drag.startY
     if (Math.abs(deltaX) > 4 || Math.abs(deltaY) > 4) {
       drag.moved = true
     }
 
-    const centerLeft = area.clientWidth / 2 - 63
-    const centerTop = area.clientHeight / 2 - 88
-    const minOffsetX = 16 - centerLeft
-    const maxOffsetX = area.clientWidth - 126 - 16 - centerLeft
-    const minOffsetY = 16 - centerTop
-    const maxOffsetY = area.clientHeight - 176 - 16 - centerTop
+    const centerLeft = area.clientWidth / 2 - metrics.halfWidth
+    const centerTop = area.clientHeight / 2 - metrics.halfHeight
+    const minOffsetX = metrics.padding - centerLeft
+    const maxOffsetX = area.clientWidth - metrics.cardWidth - metrics.padding - centerLeft
+    const minOffsetY = metrics.padding - centerTop
+    const maxOffsetY = area.clientHeight - metrics.cardHeight - metrics.padding - centerTop
 
     const nextX = clamp(drag.originX + deltaX, minOffsetX, maxOffsetX)
     const nextY = clamp(drag.originY + deltaY, minOffsetY, maxOffsetY)
@@ -133,8 +149,9 @@ function Deck52Game() {
     if (shouldDrawCard) {
       const area = areaRef.current
       if (topCard && area) {
-        const placedX = area.clientWidth / 2 - 63 + cardOffsetRef.current.x
-        const placedY = area.clientHeight / 2 - 88 + cardOffsetRef.current.y
+        const metrics = getCardMetrics(area)
+        const placedX = area.clientWidth / 2 - metrics.halfWidth + cardOffsetRef.current.x
+        const placedY = area.clientHeight / 2 - metrics.halfHeight + cardOffsetRef.current.y
         setTableCards((previous) => [
           ...previous,
           {
@@ -206,14 +223,24 @@ function Deck52Game() {
     const drag = tableDragState.current
     if (!area || !drag.isDragging || drag.pointerId !== event.pointerId || !drag.cardId) return
 
+    const metrics = getCardMetrics(area)
+
     const deltaX = event.clientX - drag.startX
     const deltaY = event.clientY - drag.startY
     if (Math.abs(deltaX) > 4 || Math.abs(deltaY) > 4) {
       drag.moved = true
     }
 
-    const nextX = clamp(drag.originX + deltaX, 16, Math.max(16, area.clientWidth - 126 - 16))
-    const nextY = clamp(drag.originY + deltaY, 16, Math.max(16, area.clientHeight - 176 - 16))
+    const nextX = clamp(
+      drag.originX + deltaX,
+      metrics.padding,
+      Math.max(metrics.padding, area.clientWidth - metrics.cardWidth - metrics.padding),
+    )
+    const nextY = clamp(
+      drag.originY + deltaY,
+      metrics.padding,
+      Math.max(metrics.padding, area.clientHeight - metrics.cardHeight - metrics.padding),
+    )
 
     setTableCards((previous) =>
       previous.map((entry) => {
