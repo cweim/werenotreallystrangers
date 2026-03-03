@@ -15,6 +15,13 @@ function HomePage() {
           <p className="game-card-desc">Card-based conversation game with levels and wild cards.</p>
         </Link>
 
+        <Link to="/games/deck-52" className="game-card">
+          <h2 className="game-card-title">52-Card Deck</h2>
+          <p className="game-card-desc">
+            Standard deck with draggable top card, tap-to-open, shuffle, and remove jokers.
+          </p>
+        </Link>
+
       </section>
     </main>
   )
