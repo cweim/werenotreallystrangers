@@ -22,6 +22,13 @@ function HomePage() {
           </p>
         </Link>
 
+        <Link to="/games/imposter" className="game-card">
+          <h2 className="game-card-title">Guess The Imposter</h2>
+          <p className="game-card-desc">
+            Set up players, reveal secret roles privately, then continue the round offline.
+          </p>
+        </Link>
+
       </section>
     </main>
   )
