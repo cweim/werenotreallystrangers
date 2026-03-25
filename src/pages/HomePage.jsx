@@ -29,6 +29,13 @@ function HomePage() {
           </p>
         </Link>
 
+        <Link to="/games/truth-dare" className="game-card">
+          <h2 className="game-card-title">Truth or Dare</h2>
+          <p className="game-card-desc">
+            145 prompts across 5 decks. Pick your intensity or go random.
+          </p>
+        </Link>
+
       </section>
     </main>
   )
