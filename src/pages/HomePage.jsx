@@ -36,6 +36,13 @@ function HomePage() {
           </p>
         </Link>
 
+        <Link to="/games/herd-mentality" className="game-card">
+          <h2 className="game-card-title">Herd Mentality</h2>
+          <p className="game-card-desc">
+            Think like the herd! Match the majority answer to score, avoid the Pink Cow.
+          </p>
+        </Link>
+
       </section>
     </main>
   )

@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Deck52Game from './games/deck52/Deck52Game'
+import HerdMentalityGame from './games/herdmentality/HerdMentalityGame'
 import ImposterGame from './games/imposter/ImposterGame'
 import TruthDareGame from './games/truthdare/TruthDareGame'
 import WnrsGame from './games/wnrs/WnrsGame'
@@ -11,6 +12,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/games/deck-52" element={<Deck52Game />} />
+      <Route path="/games/herd-mentality" element={<HerdMentalityGame />} />
       <Route path="/games/imposter" element={<ImposterGame />} />
       <Route path="/games/truth-dare" element={<TruthDareGame />} />
       <Route path="/games/wnrs" element={<WnrsGame />} />
