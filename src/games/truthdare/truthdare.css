@@ -1,9 +1,6 @@
 :root {
-  --truth-good: #4a90a4;
-  --truth-deep: #8b6bb5;
-  --truth-spicy: #e85d75;
-  --dare-easy: #5db589;
-  --dare-hard: #d35d6e;
+  --truth: #2d6bbf;
+  --dare: #c93535;
 }
 
 .td-app {
@@ -81,32 +78,13 @@
 .td-decks {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-.deck-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.deck-group-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-subtle);
+  gap: 1rem;
 }
 
 .deck-row {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.deck-row:has(.td-deck:nth-child(2):last-child) {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  max-width: 66%;
+  gap: 1rem;
 }
 
 .td-deck {
@@ -202,7 +180,7 @@
 }
 
 .td-random-btn {
-  background: linear-gradient(135deg, #e85d75, #d35d6e, #8b6bb5);
+  background: linear-gradient(135deg, var(--truth), var(--dare));
   background-size: 200% 200%;
   animation: gradient-shift 3s ease infinite;
   color: #fff;
@@ -211,12 +189,12 @@
   letter-spacing: 0.05em;
   padding: 1.1rem 1.5rem;
   border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(232, 93, 117, 0.4);
+  box-shadow: 0 4px 20px rgba(45, 107, 191, 0.35);
   text-transform: uppercase;
 }
 
 .td-random-btn:hover:not(:disabled) {
-  box-shadow: 0 6px 28px rgba(232, 93, 117, 0.55);
+  box-shadow: 0 6px 28px rgba(45, 107, 191, 0.5);
   transform: translateY(-3px);
 }
 
